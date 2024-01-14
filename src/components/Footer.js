@@ -140,7 +140,7 @@ export const Footer = () => {
         )}
       </div>
       <div className="copyfooter">
-        <div>
+        <div className="copyright">
           <p className="p-text">@2024 Parasuram All rights reserved</p>
         </div>
         <div className="social">

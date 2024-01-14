@@ -12,8 +12,9 @@ function Navigation() {
           <NavLink to="/" className="text-decoration-none text-black">
             <img
               src="./images/tspsram.png"
-              style={{ height: "50px", borderRadius: "30px" }}
-              alt="..."
+              style={{ width: "100%", height: "30px", borderRadius: "30px" }}
+              alt="Logo"
+              className="logo-img"
             />
           </NavLink>
         </Navbar.Brand>

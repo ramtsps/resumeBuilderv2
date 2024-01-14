@@ -161,30 +161,35 @@
 }
 /* Add these styles to your CSS or SCSS file */
 
+/* Add these styles to your CSS or SCSS file */
+
 .copyfooter {
   display: flex;
-  margin-left: 40%;
-  margin-right: 30%;
-  text-align: center;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  text-align: center;
+  padding: 20px; /* Add padding as needed */
 }
 
-.social a {
-  margin-right: 20px;
+.copyfooter .copyright {
+  margin-bottom: 10px;
+}
+
+.copyfooter .social {
+  display: flex;
+  gap: 10px; /* Adjust the gap between social icons */
+}
+
+.copyfooter .social a {
   text-decoration: none;
   color: #333;
   font-size: 24px;
 }
 
-.social a:hover {
+.copyfooter .social a:hover {
   color: #007bff; /* Change the color on hover as desired */
 }
 
-.p-text {
-  color: #666;
-  font-size: 18px;
-  padding-top: 20px;
-}
+/* Add any additional styles as needed */
 
 /* Add any additional styles as needed */
