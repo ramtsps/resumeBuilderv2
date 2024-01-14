@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Stack } from "react-bootstrap";
+import React, { useState, useRef, useEffect } from "react";
+
 import { BsLinkedin, BsGithub, BsGlobe } from "react-icons/bs";
 import { GiGraduateCap } from "react-icons/gi";
 import { FaLink } from "react-icons/fa";
@@ -57,6 +57,47 @@ function PdfComponent() {
       pdf.save(`${name}_Resume.pdf`);
     });
   };
+
+  const colors = [
+    "#cbc978",
+    "#a7f29d",
+    "#88b7e5",
+    "#dd88e5",
+    "#e588a2",
+    "#ed8936",
+  ];
+  const colorsf = ["#FFFFFF", "#000000"];
+  const defaultTextColor = colors[0];
+  const defaultfnColor = colorsf[1];
+
+  const [activeColor, setActiveColor] = useState(defaultTextColor);
+  const [activeColorf, setActiveColorf] = useState(colorsf[0]);
+
+  const [textColor, setTextColor] = useState(defaultTextColor);
+  const [fnColor, setfnColor] = useState(defaultfnColor);
+
+  const handleTextColorChange = (color) => {
+    setTextColor(color);
+    setActiveColor(color);
+  };
+  const handlefontColorChange = (color) => {
+    setfnColor(color);
+    setActiveColorf(color);
+  };
+  const containerRef = useRef();
+  useEffect(() => {
+    const container = containerRef.current;
+    if (activeColor || !container) return;
+
+    container.style.setProperty("--color", activeColor);
+  }, [activeColor]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (activeColorf || !container) return;
+
+    container.style.setProperty("--colorf", activeColorf);
+  }, [activeColorf]);
 
   const GetIcon = (icon) => {
     switch (icon.icon) {
@@ -128,6 +169,145 @@ function PdfComponent() {
   return (
     <>
       <div className="custom-button-container">
+        <div
+          className="colors"
+          style={{
+            paddingLeft: "10px",
+            paddingRight: "10px",
+            height: "100px",
+            overflowY: "auto",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "20px",
+              fontWeight: "bold",
+              marginBottom: "10px",
+              marginTop: "30px",
+            }}
+          >
+            BackgroundColor Color
+          </p>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <select
+              value={textColor}
+              onChange={(e) => handleTextColorChange(e.target.value)}
+              style={{
+                marginRight: "10px",
+                padding: "5px",
+                fontSize: "16px",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+                cursor: "pointer",
+              }}
+            >
+              {colors.map((color) => (
+                <option
+                  key={color}
+                  value={color}
+                  style={{ backgroundColor: color, color: "#fff" }}
+                >
+                  {color}
+                </option>
+              ))}
+            </select>
+
+            <span
+              style={{
+                backgroundColor: textColor,
+                width: "20px",
+                height: "20px",
+                display: "inline-block",
+                marginLeft: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+              }}
+            ></span>
+            <input
+              type="color"
+              value={textColor}
+              onChange={(e) => handleTextColorChange(e.target.value)}
+              style={{ marginLeft: "10px", backgroundColor: "white" }}
+            />
+            <span
+              style={{
+                backgroundColor: textColor,
+                width: "20px",
+                height: "20px",
+                display: "inline-block",
+                marginLeft: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+              }}
+            ></span>
+          </div>
+
+          <p
+            style={{
+              fontSize: "20px",
+              fontWeight: "bold",
+              marginBottom: "10px",
+              marginTop: "30px",
+            }}
+          >
+            Font Color
+          </p>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <select
+              value={fnColor}
+              onChange={(e) => handlefontColorChange(e.target.value)}
+              style={{
+                marginRight: "10px",
+                padding: "5px",
+                fontSize: "16px",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+                cursor: "pointer",
+              }}
+            >
+              {colorsf.map((color) => (
+                <option
+                  key={color}
+                  value={color}
+                  style={{ backgroundColor: color, color: "#fff" }}
+                >
+                  {color}
+                </option>
+              ))}
+            </select>
+
+            <span
+              style={{
+                backgroundColor: fnColor,
+                width: "20px",
+                height: "20px",
+                display: "inline-block",
+                marginLeft: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+              }}
+            ></span>
+            <input
+              type="color"
+              value={fnColor}
+              onChange={(e) => handlefontColorChange(e.target.value)}
+              style={{ marginLeft: "10px", backgroundColor: "white" }}
+            />
+            <span
+              style={{
+                backgroundColor: fnColor,
+                width: "20px",
+                height: "20px",
+                display: "inline-block",
+                marginLeft: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+              }}
+            ></span>
+          </div>
+        </div>
         <button className="custom-button" onClick={printDocument}>
           Download
         </button>
@@ -135,26 +315,38 @@ function PdfComponent() {
       <div className="custom-container">
         <div className="conscroll">
           <div className="custom-row" id="divToPrint" size="A4">
-            <div className="custom-columnn bg-1">
+            <div
+              className="custom-columnn"
+              style={{
+                "--color": activeColor,
+                "--colorf": activeColorf,
+              }}
+            >
               <div className="">
                 <div className="custom-profile">
                   <div className="custom-profile-image">
                     <img src={file} alt="Profile" />
                   </div>
                   <div className="custom-text-center">
-                    <span className="custom-font-bold custom-mb-0 custom-firstname">
+                    <span
+                      className="custom-font-bold custom-mb-0 custom-firstname "
+                      style={{ color: activeColorf }}
+                    >
                       {name}
                     </span>
                     <br />
-                    <p>{profile.tagline}</p>
-                    <div style={{ display: "flex" }}>
+                    <p style={{ paddingRight: "10px" }}>{profile.tagline}</p>
+                    <div style={{ display: "flex", paddingLeft: "10px" }}>
                       <p
                         className="custom-mb-0"
-                        style={{ paddingRight: "10px" }}
+                        style={{ color: activeColorf }}
                       >
                         <HiOfficeBuilding size={20} /> {profile.position}
                       </p>
-                      <p>
+                      <p
+                        className="custom-mb-0"
+                        style={{ paddingLeft: "10px" }}
+                      >
                         <HiLocationMarker size={20} /> {profile.location}
                       </p>
                     </div>
@@ -164,14 +356,17 @@ function PdfComponent() {
                   <GetLinks />
                 </div>
                 <div className="custom-skills">
-                  <h4 className="custom-title">Skills</h4>
-                  <div className="custom-flex-wrap">
-                    {skills.map((items, id) => (
-                      <p className="custom-technology" key={id}>
-                        {items}
-                      </p>
+                  <h4 className="custom-title" style={{ padding: "10px" }}>
+                    Skills
+                  </h4>
+                  <hr className="custom-hrsk" />
+                  <ul className="custom-skill-list">
+                    {skills.map((item, id) => (
+                      <li className="custom-skill-item" key={id}>
+                        {item}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -208,7 +403,7 @@ function PdfComponent() {
                     <div className="custom-experience-item" key={id}>
                       <HiOfficeBuilding size={30} />
                       <div className="custom-px-3">
-                        <h4>{item.title}</h4>
+                        <h5>{item.title}</h5>
                         <p className="custom-m-0">
                           {item.company} • {item.startMonth} {item.startYear}{" "}
                           {`${

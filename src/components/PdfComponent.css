@@ -31,8 +31,23 @@
   margin-top: 1rem;
   width: 700px;
   max-width: 1500px;
-  height: 1080px;
+  height: 1050px;
   scroll-behavior: auto;
+}
+.colors {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.colors .color {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: #239ce2;
+}
+.colors .active {
+  border: 2px solid #000;
 }
 
 .custom-column {
@@ -41,7 +56,12 @@
 }
 .custom-columnn {
   /* flex: 1; */
+
   width: 40%;
+  padding-top: 20px;
+  background-color: var(--color);
+  color: var(--colorf);
+  /* background-color: #e588a2; */
 }
 
 .custom-content {
@@ -56,17 +76,11 @@
 }
 
 .custom-profile-image img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-}
-
-.custom-links {
-  margin-top: 1rem;
-}
-
-.custom-skills {
-  margin-top: 1rem;
+  border: 5px solid;
+  border-color: #000000;
 }
 
 .custom-title {
@@ -88,7 +102,10 @@
   font-size: 20px;
   text-transform: capitalize;
 }
-
+.custom-skill-item {
+  font-size: 20px;
+  text-transform: capitalize;
+}
 .custom-about {
   margin-top: 1rem;
 }
@@ -101,7 +118,10 @@
   margin-top: 1rem;
   border: 1px solid #1c1c1c;
 }
-
+.custom-hrsk {
+  margin-top: 10px;
+  border: 1px solid #000000;
+}
 .custom-certificate-item,
 .custom-experience-item,
 .custom-education-item {
@@ -132,6 +152,7 @@
 }
 
 .custom-uppercase {
+  font-size: 18px;
   text-transform: uppercase;
 }
 
@@ -149,8 +170,6 @@
 
 .custom-list-item {
   display: flex;
-  align-items: start;
-  align-items: center;
 }
 
 .custom-bg-2 {
