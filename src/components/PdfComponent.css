@@ -1,0 +1,183 @@
+/* PdfComponent.css */
+
+.custom-button-container {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.custom-button {
+  background-color: #333;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  margin-top: 1rem;
+  width: 700px;
+  max-width: 1500px;
+  height: 1080px;
+  scroll-behavior: auto;
+}
+
+.custom-column {
+  /* flex: 1; */
+  width: 60%;
+}
+.custom-columnn {
+  /* flex: 1; */
+  width: 40%;
+}
+
+.custom-content {
+  padding: 1rem;
+}
+
+.custom-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.custom-profile-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.custom-links {
+  margin-top: 1rem;
+}
+
+.custom-skills {
+  margin-top: 1rem;
+}
+
+.custom-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.custom-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.custom-technology {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 0.1rem 0.2rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.custom-about {
+  margin-top: 1rem;
+}
+
+.custom-text-break {
+  white-space: pre-line;
+}
+
+.custom-hr {
+  margin-top: 1rem;
+  border: 1px solid #1c1c1c;
+}
+
+.custom-certificate-item,
+.custom-experience-item,
+.custom-education-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.custom-certificate-item img,
+.custom-experience-item img,
+.custom-education-item img {
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.custom-text-center {
+  text-align: center;
+}
+
+.custom-font-bold {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.custom-mb-0 {
+  margin-bottom: 0;
+}
+
+.custom-uppercase {
+  text-transform: uppercase;
+}
+
+.custom-px-3 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.custom-link-icon {
+  color: #00b3ff;
+  padding-right: 10px;
+}
+
+/* YourCustomStyles.css */
+
+.custom-list-item {
+  display: flex;
+  align-items: start;
+  align-items: center;
+}
+
+.custom-bg-2 {
+  background-color: #313131 /* Your color for even items */;
+}
+
+.custom-bg-3 {
+  background-color: #4d4d4d /* Your color for odd items */;
+}
+
+.custom-text-white {
+  flex-wrap: wrap;
+  color: white;
+}
+
+.custom-p-3 {
+  padding: 0.75rem; /* Adjust as needed */
+}
+
+.custom-m-0 {
+  margin: 0;
+}
+
+.custom-mx-2 {
+  margin-right: 0.5rem; /* Adjust as needed */
+}
+.conscroll {
+  max-height: 100vh; /* Set your desired max height, 100vh means 100% of the viewport height */
+  overflow-x: auto; /* Use auto so the scrollbar appears only when needed */
+}

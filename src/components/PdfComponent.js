@@ -11,7 +11,7 @@ import {
 } from "react-icons/hi";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-
+import "./PdfComponent.css";
 import { PiCertificateFill } from "react-icons/pi";
 import { useSelector } from "react-redux";
 
@@ -110,135 +110,106 @@ function PdfComponent() {
     return list.map((item, id) => {
       return (
         <div
-          className={
-            id % 2 === 0
-              ? "d-flex aligh-items-start align-items-center bg-2 text-white p-3"
-              : "d-flex aligh-items-start align-items-center bg-3 text-white p-3"
-          }
+          className={`custom-list-item ${
+            id % 2 === 0 ? "custom-bg-2" : "custom-bg-3"
+          } custom-text-white custom-p-3`}
           key={id}
         >
-          <p className="m-0">
+          <p className="custom-m-0">
             <GetIcon icon={item.icon} />
           </p>
-          <span className="mx-2"></span>
-          <p className="m-0">{item.link}</p>
+          <span className="custom-mx-2"></span>
+          <p className="custom-m-0">{item.link}</p>
         </div>
       );
     });
   };
 
   return (
-    <Fragment>
-      <div className="d-grid col-2 mx-auto mt-4">
-        <button
-          className="nav-link align-middle bg-dark text-white p-2 rounded"
-          onClick={printDocument}
-        >
+    <>
+      <div className="custom-button-container">
+        <button className="custom-button" onClick={printDocument}>
           Download
         </button>
-        {/* <button
-          className="nav-link align-middle bg-dark text-white p-2 rounded mt-2"
-          onClick={createAndDownloadPdf}
-        >
-          Download Version 2.0
-        </button> */}
       </div>
-      <div className="container d-flex justify-content-center p-4">
-        <div className="row pdf bg-light" id="divToPrint" size="A4">
-          <div className="d-flex align-items-center justify-content-center col-md-5 bg-1 p-0 py-2">
-            <div>
-              <div className="d-flex justify-content-center">
-                <img src={file} className="pdf-profile-image" alt="..."></img>
-              </div>
-
-              <Stack className="text-center">
-                <span className="font-bold m-0 firstname">{name}</span>
-                <br />
-
-                <p>{profile.tagline}</p>
-                <p className="m-0">
-                  <HiOfficeBuilding size={20} /> {profile.position}
-                </p>
-                <p>
-                  <HiLocationMarker size={20} /> {profile.location}
-                </p>
-              </Stack>
-              <br></br>
-              <GetLinks />
-
-              <br></br>
-              <Stack className="p-3">
-                <h4 className="title">Skills</h4>
-                <div className="d-flex flex-wrap">
-                  {skills.map((items, id) => {
-                    return (
-                      <p className="technology rounded" key={id}>
+      <div className="custom-container">
+        <div className="conscroll">
+          <div className="custom-row" id="divToPrint" size="A4">
+            <div className="custom-columnn bg-1">
+              <div className="">
+                <div className="custom-profile">
+                  <div className="custom-profile-image">
+                    <img src={file} alt="Profile" />
+                  </div>
+                  <div className="custom-text-center">
+                    <span className="custom-font-bold custom-mb-0 custom-firstname">
+                      {name}
+                    </span>
+                    <br />
+                    <p>{profile.tagline}</p>
+                    <div style={{ display: "flex" }}>
+                      <p
+                        className="custom-mb-0"
+                        style={{ paddingRight: "10px" }}
+                      >
+                        <HiOfficeBuilding size={20} /> {profile.position}
+                      </p>
+                      <p>
+                        <HiLocationMarker size={20} /> {profile.location}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="custom-links">
+                  <GetLinks />
+                </div>
+                <div className="custom-skills">
+                  <h4 className="custom-title">Skills</h4>
+                  <div className="custom-flex-wrap">
+                    {skills.map((items, id) => (
+                      <p className="custom-technology" key={id}>
                         {items}
                       </p>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
-              </Stack>
-            </div>
-          </div>
-          <div className="d-flex align-items-center col-md-7 p-0 py-4">
-            <div>
-              <div className="px-4 py-1">
-                <h4 className="title">About Me</h4>
-                <p className="text-break">{about}</p>
-                <hr></hr>
               </div>
-              <div className="px-4">
-                <h4 className="title">Certificate</h4>
-                <hr></hr>
-                {certificateList.map((item, id) => {
-                  return (
-                    <div className="d-flex justify-content-start py-1" key={id}>
-                      {/* <GiGraduateCap /> */}
+            </div>
+            <div className="custom-column">
+              <div className="custom-content">
+                <div className="custom-about">
+                  <h4 className="custom-title">About Me</h4>
+                  <hr className="custom-hr" />
+                  <p className="custom-text-break">{about}</p>
+                </div>
+                <div className="custom-certificate">
+                  <h4 className="custom-title">Certificate</h4>
+                  <hr className="custom-hr" />
+                  {certificateList.map((item, id) => (
+                    <div className="custom-certificate-item" key={id}>
                       <PiCertificateFill size={40} />
-                      <div className="px-3">
-                        <h4
-                          style={{
-                            fontSize: "20px",
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {item.course}
-                        </h4>
-                        <p
-                          className="m-0"
-                          style={{
-                            fontSize: "20px",
-                            textTransform: "capitalize",
-                          }}
-                        >
+                      <div className="custom-px-3">
+                        <h4 className="custom-uppercase">{item.course}</h4>
+                        <p className="custom-m-0 custom-capitalize">
                           {item.company}
                         </p>
                         <p>
-                          <FaLink
-                            style={{ color: "00B3FF", paddingRight: "10px" }}
-                            size={30}
-                          />
+                          <FaLink className="custom-link-icon" size={30} />
                           {item.link}
                         </p>
-                        {/* <p>
-                          {item.startYear} - {item.endYear} • Grade:{" "}
-                          {item.grade}
-                        </p> */}
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-              <div className="px-4">
-                <h4 className="title">Experience</h4>
-                {experienceList.map((item, id) => {
-                  return (
-                    <div className="d-flex justify-content-start py-1" key={id}>
+                  ))}
+                </div>
+                <div className="custom-experience">
+                  <h4 className="custom-title">Experience</h4>
+                  <hr className="custom-hr" />
+                  {experienceList.map((item, id) => (
+                    <div className="custom-experience-item" key={id}>
                       <HiOfficeBuilding size={30} />
-                      <div className="px-3">
+                      <div className="custom-px-3">
                         <h4>{item.title}</h4>
-                        <p className="m-0">
+                        <p className="custom-m-0">
                           {item.company} • {item.startMonth} {item.startYear}{" "}
                           {`${
                             item.isWorking
@@ -246,25 +217,21 @@ function PdfComponent() {
                               : " - " + item.endMonth + " " + item.endYear
                           }`}
                         </p>
-                        <p className="m-0">{item.location}</p>
+                        <p className="custom-m-0">{item.location}</p>
                         <p>{item.description}</p>
                       </div>
                     </div>
-                  );
-                })}
-
-                <hr></hr>
-              </div>
-
-              <div className="px-4">
-                <h4 className="title">Education</h4>
-                {educationList.map((item, id) => {
-                  return (
-                    <div className="d-flex justify-content-start py-1" key={id}>
+                  ))}
+                </div>
+                <div className="custom-education">
+                  <h4 className="custom-title">Education</h4>
+                  <hr className="custom-hr" />
+                  {educationList.map((item, id) => (
+                    <div className="custom-education-item" key={id}>
                       <GiGraduateCap size={40} />
-                      <div className="px-3">
+                      <div className="custom-px-3">
                         <h4>{item.institute}</h4>
-                        <p className="m-0">
+                        <p className="custom-m-0">
                           {item.degree} • {item.fieldOfStudy}
                         </p>
                         <p>
@@ -273,14 +240,14 @@ function PdfComponent() {
                         </p>
                       </div>
                     </div>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 }
 
